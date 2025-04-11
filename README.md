@@ -1,98 +1,196 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Contentful Consumer API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A RESTful API built with NestJS that consumes and synchronizes product data from Contentful, providing endpoints for product management and reporting.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- 🔐 JWT Authentication
+- 📦 Product Management
+- 📊 Reporting System
+- 🔄 Contentful Synchronization
+- 📝 Swagger Documentation
+- 🧪 Test Coverage
+- 🐳 Docker Support
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
 
-## Project setup
+- Node.js (v22 or higher)
+- Docker and Docker Compose
+- PostgreSQL
+- Contentful Account
 
-```bash
-$ npm install
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Contentful Configuration
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+CONTENTFUL_ENVIRONMENT=master
+CONTENTFUL_CONTENT_TYPE=product
+
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_DATABASE=contentful_rest
+
+# JWT Configuration
+JWT_SECRET=your_jwt_secret
 ```
 
-## Compile and run the project
+## Installation
 
+1. Clone the repository:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/ChoqueCastroLD/contentful-consumer
+cd contentful-consumer
 ```
 
-## Run tests
-
+2. Install dependencies:
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm install
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+3. Start the application using Docker:
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+docker-compose up -d
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## Docker
 
-## Resources
+Build and run the application using Docker:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+docker-compose up -d
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Available Scripts
 
-## Support
+- `npm run build` - Build the application
+- `npm run format` - Format code using Prettier
+- `npm run start` - Start the application in production mode
+- `npm run start:dev` - Start the application in development mode
+- `npm run start:debug` - Start the application in debug mode
+- `npm run start:prod` - Start the application in production mode
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:cov` - Run tests with coverage
+- `npm run test:debug` - Run tests in debug mode
+- `npm run test:e2e` - Run end-to-end tests
+- `npm run generate:token` - Generate a JWT token for authentication
+- `npm run sync:products` - Synchronize products from Contentful
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Docker Scripts
 
-## Stay in touch
+To run scripts inside the Docker container:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# Generate JWT token
+docker-compose exec app npm run gen:token
 
-## License
+# Synchronize products
+# You should run this one while the container is running to get a initial batch of data
+docker-compose exec app npm run sync:products
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## API Documentation
+
+Once the application is running, you can access the Swagger documentation at:
+```
+http://localhost:3000/api/docs
+```
+
+### Authentication
+
+1. Generate a JWT token:
+```bash
+npm run gen:token
+```
+
+2. Use the token in your requests:
+```
+Authorization: Bearer <your_token>
+```
+
+### Endpoints
+
+#### Public Endpoints
+
+- `GET /products` - Get all products with optional filters
+  - Query Parameters:
+    - `name` (string, optional) - Filter by product name
+    - `category` (string, optional) - Filter by category
+    - `minPrice` (number, optional) - Minimum price
+    - `maxPrice` (number, optional) - Maximum price
+    - `page` (number, optional, default: 1) - Page number for pagination
+    - `limit` (number, optional, default: 10) - Items per page
+    - `search` (string, optional) - Search query
+    - `startDate` (string, optional) - Start date for filtering
+    - `endDate` (string, optional) - End date for filtering
+
+- `DELETE /products/:id` - Soft delete a product by ID
+
+#### Private Endpoints (Require Authentication)
+
+- `GET /reports/deleted-products-percentage` - Get percentage of deleted products
+- `GET /reports/non-deleted-products-percentage` - Get percentage of non-deleted products with filters
+  - Query Parameters:
+    - `priceMin` (number, optional) - Minimum price
+    - `priceMax` (number, optional) - Maximum price
+    - `startDate` (string, optional) - Start date
+    - `endDate` (string, optional) - End date
+- `GET /reports/price-range-stats` - Get product statistics by price ranges
+  - Query Parameters:
+    - `ranges` (string, optional) - Comma-separated price ranges (e.g., "0-100,101-500,501-1000")
+
+## Project Structure
+
+```
+src/
+├── auth/                 # Authentication module
+├── modules/
+│   ├── public/          # Public endpoints
+│   │   └── products/    # Product management
+│   ├── private/         # Private endpoints
+│   │   └── reports/     # Reporting system
+│   └── common/          # Shared services
+├── scheduler/           # Scheduled tasks
+└── scripts/            # Utility scripts
+```
+
+## Test Coverage
+
+Current test coverage report (as of latest update):
+
+### Overall Project Coverage
+| Metric | Coverage |
+|--------|----------|
+| Statements | 56.34% |
+| Branches | 54.16% |
+| Functions | 63.82% |
+| Lines | 55.18% |
+
+### High Coverage (80-100%)
+| File | Statements | Branches | Functions | Lines |
+|------|------------|----------|-----------|-------|
+| reports.service.ts | 100% | 100% | 100% | 100% |
+| reports.controller.ts | 100% | 100% | 100% | 100% |
+| app.controller.ts | 100% | 100% | 100% | 100% |
+| auth.service.ts | 92.85% | 66.66% | 100% | 91.66% |
+| product.dto.ts | 100% | 100% | 100% | 100% |
+| scheduler.service.ts | 100% | 100% | 100% | 100% |
+
+### Medium Coverage (50-79%)
+| File | Statements | Branches | Functions | Lines |
+|------|------------|----------|-----------|-------|
+| products.service.ts | 74.46% | 61.29% | 100% | 72.09% |
+| filter-products.dto.ts | 76.47% | 100% | 0% | 76.47% |
+
+To run the coverage report:
+```bash
+npm run test:cov
+```

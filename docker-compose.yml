@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16-alpine
@@ -26,11 +24,19 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/contentful_rest
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_DATABASE=contentful_rest
       - CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE_ID}
       - CONTENTFUL_ACCESS_TOKEN=${CONTENTFUL_ACCESS_TOKEN}
       - CONTENTFUL_ENVIRONMENT=${CONTENTFUL_ENVIRONMENT}
       - CONTENTFUL_CONTENT_TYPE=${CONTENTFUL_CONTENT_TYPE}
+      - NODE_ENV=development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       postgres:
         condition: service_healthy
